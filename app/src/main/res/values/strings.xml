@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">nerovnice</string>
+    <string-array name="operator">
+        <item>></item>
+        <item>≥</item>
+        <item>&lt;</item>
+        <item>≤</item>
+    </string-array>
+</resources>
