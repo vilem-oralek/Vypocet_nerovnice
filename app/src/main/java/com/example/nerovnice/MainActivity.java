@@ -18,7 +18,7 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 
     private Spinner spinnerOperation;
-    private EditText editText1, editText2, editText3;
+    private EditText editText1, editText2, editText3, editText4;
     private TextView textView;
 
 
@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         editText1 = findViewById(R.id.editTextNumberSigned);
         editText2 = findViewById(R.id.editTextNumberSigned2);
         editText3 = findViewById(R.id.editTextNumberSigned3);
+        editText4 = findViewById(R.id.editTextNumberSigned4);
+
         textView = findViewById(R.id.textView);
         spinnerOperation = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -55,18 +57,26 @@ public class MainActivity extends AppCompatActivity {
         String num1Str = editText1.getText().toString();
         String num2Str = editText2.getText().toString();
         String num3Str = editText3.getText().toString();
+        String num4Str = editText4.getText().toString();
         String operation = spinnerOperation.getSelectedItem().toString();
 
+        if (num1Str.isEmpty() || num2Str.isEmpty() || num3Str.isEmpty() || num4Str.isEmpty()){
+            textView.setText("zadejte všechny čísla");
+            return;
+        }
 
         int num1 = Integer.parseInt(num1Str);
         int num2 = Integer.parseInt(num2Str);
         int num3 = Integer.parseInt(num3Str);
-        double D = num2 * num2 - 4 * num1 * num3;
+        int num4 = Integer.parseInt(num4Str);
 
         if (num1 == 0){
-            textView.setText("Zadejte kvadratickou nerovnici");
+            textView.setText("Nesprávný formát kvadratické nerovnice");
+            return;
         }
 
+        num3 -= num4;
+        double D = num2 * num2 - 4 * num1 * num3;
         double x1 = (-num2 - Math.sqrt(D)) / (2 * num1);
         double x2 = (-num2 + Math.sqrt(D)) / (2 * num1);
         double x = (-num2) / (2 * num1);
@@ -163,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
         editText1.setText("");
         editText2.setText("");
         editText3.setText("");
+        editText4.setText("");
         textView.setText("Výsledek");
     }
 }
