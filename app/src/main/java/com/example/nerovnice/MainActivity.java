@@ -50,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerOperation.setAdapter(adapter);
     }
     public void Calculate(View view){
-        Spinner spinnerOperation = (Spinner) findViewById(R.id.spinner);
-        Button button1 = (Button) findViewById(R.id.button);
-        Button button2 = (Button) findViewById(R.id.button2);
 
         String num1Str = editText1.getText().toString();
         String num2Str = editText2.getText().toString();
